@@ -1,4 +1,4 @@
-# Zeek Scripts
+# Zeek Info
 
 ## Introduction
 
@@ -19,4 +19,6 @@
 - You should **not** write the `.zeek` extension while adding tour script to `local.zeek` file.
 
 ## Creating a new analyzer
+
+- Zeek also has a wide about creating analyzers. Zeek has a deep integration with Spicy parser generator 
 
