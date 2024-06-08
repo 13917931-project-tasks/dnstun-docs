@@ -35,7 +35,7 @@ Where *MyProtocol* is just a mock name for the analyzer.
 Then, you will have to make some configurations, like in the following example:
 
 
-```c++
+```matlab
 "package-template" requires a "name" value (the name of the package, e.g. "FooBar" or "spicy-http"): 
 name: MyProtocol
 "package-template" requires a "analyzer" value (name of the Spicy analyzer, which typically corresponds to the protocol/format being parsed (e.g. "HTTP", "PNG")): 
