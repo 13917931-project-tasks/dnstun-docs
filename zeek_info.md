@@ -35,7 +35,7 @@ Where *MyProtocol* is just a mock name for the analyzer.
 Then, you will have to make some configurations, like in the following example:
 
 
-```
+```c++
 "package-template" requires a "name" value (the name of the package, e.g. "FooBar" or "spicy-http"): 
 name: MyProtocol
 "package-template" requires a "analyzer" value (name of the Spicy analyzer, which typically corresponds to the protocol/format being parsed (e.g. "HTTP", "PNG")): 
@@ -68,4 +68,4 @@ You can also install your custom analyzer in order to apply it in live network a
 zkg install /directory/to/your/analyzer
 ```
 
-Make sure you are using the most recent version of zkg. Zkg stands for Zeek Packet manager, which "makes it easy for Zeek users to install and manage third party scripts as well as plugins for Zeek and ZeekControl" [1](https://github.com/zeek/package-manager#zeek-package-manager).
+Make sure you are using the most recent version of zkg. Zkg stands for Zeek Packet manager, which "makes it easy for Zeek users to install and manage third party scripts as well as plugins for Zeek and ZeekControl" [{1}](https://github.com/zeek/package-manager#zeek-package-manager).
