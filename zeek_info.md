@@ -65,7 +65,7 @@ zeek -Cr traffic_file.pcap myprotocol.htlo main.zeek
 You can also install your custom analyzer in order to apply it in live network analysis usin the following command:
 
 ```
-zkg install /directory/to/your/analyzer
+zkg install /path/to/your/analyzer
 ```
 
 Make sure you are using the most recent version of zkg. Zkg stands for Zeek Packet manager, which "makes it easy for Zeek users to install and manage third party scripts as well as plugins for Zeek and ZeekControl" [{1}](https://github.com/zeek/package-manager#zeek-package-manager).
