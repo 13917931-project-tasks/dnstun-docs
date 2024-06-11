@@ -7,9 +7,9 @@
 
 ## Creating a new script in Zeek
 
-- Zeek documentation has plenty of information on the topic of creating [new scripts](https://docs.zeek.org/en/master/scripting/basics.html);
-- If you want to develop a new script, you can create a new folder in the directory `/usr/local/zeek/share/zeek/policy/protocols`, and place your script in there. A zeek is script is a `.zeek` file.
-- Then, to make Zeek recognize your script, you sould change the `local.zeek` file, located in the `/usr/local/zeek/share/zeek/site/` directory, and add some lines, like it is shown in the following example:
+- Zeek's documentation has plenty of information on the topic of creating [new scripts](https://docs.zeek.org/en/master/scripting/basics.html);
+- If you want to develop a new script, you can create a new folder in the directory `/usr/local/zeek/share/zeek/policy/protocols`, and place your script in there. A zeek script is a `.zeek` file.
+- Then, to make Zeek recognize your script, you should change the `local.zeek` file, located in the `/usr/local/zeek/share/zeek/site/` directory, and add some lines, like it is shown in the following example:
 
 ```
 # Write a brief description of your script
