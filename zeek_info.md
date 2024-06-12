@@ -72,7 +72,38 @@ cmake ..
 cmake --build .
 ```
 
-You can also install your custom analyzer in order to apply it in live network analysis usin the following command:
+## Installation of a custom analyzer
+
+Two processes are important when you want to install a custom analyzer: Building and testing it. Building process can be described as the compilation of codes contained in the analyzer in order to allow its implementation on Zeek. On the other hand, testing processes the execution of simple commands using the analyzer, in order to observe its coherence.
+
+In this sense, Zeek uses [Btest](https://github.com/zeek/btest#btest---a-generic-driver-for-powerful-system-tests) framework to execute tests. Its documentation has important information about the testing processing, which can be useful if you are developing a custom analyzer.
+
+In order to test your analyzer, after implementing the right features to detect the desired protocol, you can build it and then change the [baselines](https://github.com/zeek/btest#using-baselines) of BTest in order to update the expected results of the tests.
+
+1. Change the test files, if necessary, adding `.pcap` files related to the protocol that is being studied in `trace.zeek` file or changing the test string in `standalone.spicy` file.
+2. Building the custom analyzer:
+
+  ```
+  rm -rf build
+  mkdir build
+  cd build
+  cmake ..
+  cmake --build .
+  ```
+3. To update the baselines:
+   ```
+   cd testing
+   btest -U tests/standalone.spicy && btest -U tests/trace.zeek
+   ```
+4. Testing the analyzer:
+   ```
+   cd testing
+   btest -c btest.cfg
+   ```
+
+If all tests are succesful, you are ready to install the custom analyzer.
+
+To install your custom analyzer in order to apply it in live network analysis, you can execute the following command:
 
 ```
 zkg install /path/to/your/analyzer
