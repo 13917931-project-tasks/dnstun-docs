@@ -83,13 +83,13 @@ In order to test your analyzer, after implementing the right features to detect 
 1. Change the test files, if necessary, adding `.pcap` files related to the protocol that is being studied in `trace.zeek` file or changing the test string in `standalone.spicy` file.
 2. Building the custom analyzer:
 
-  ```
-  rm -rf build
-  mkdir build
-  cd build
-  cmake ..
-  cmake --build .
-  ```
+    ```
+    rm -rf build
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+    ```
 3. To update the baselines:
    ```
    cd testing
