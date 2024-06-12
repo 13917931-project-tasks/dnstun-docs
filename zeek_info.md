@@ -62,6 +62,16 @@ After that, you can read files using tour custom protocol, like in the following
 zeek -Cr traffic_file.pcap myprotocol.htlo main.zeek
 ```
 
+Building the custom analyzer:
+
+```
+rm -rf build
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
 You can also install your custom analyzer in order to apply it in live network analysis usin the following command:
 
 ```
