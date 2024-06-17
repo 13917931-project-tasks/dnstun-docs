@@ -72,6 +72,14 @@ cmake ..
 cmake --build .
 ```
 
+```
+sudo rm -rf build
+mkdir build
+cd build
+sudo cmake ..
+sudo cmake --build .
+```
+
 ## Installation of a custom analyzer
 
 Two processes are important when you want to install a custom analyzer: Building and testing it. Building process can be described as the compilation of codes contained in the analyzer in order to allow its implementation on Zeek. On the other hand, testing processes the execution of simple commands using the analyzer, in order to observe its coherence.
