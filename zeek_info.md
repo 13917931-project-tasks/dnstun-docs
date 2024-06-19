@@ -120,3 +120,9 @@ zkg install /path/to/your/analyzer
 ```
 
 Make sure you are using the [most recent version](https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html#installation) of zkg. Zkg stands for Zeek Packet manager, which "makes it easy for Zeek users to install and manage third party scripts as well as plugins for Zeek and ZeekControl" [{1}](https://github.com/zeek/package-manager#zeek-package-manager).
+
+
+OBS:
+
+grep -r "modules_name" /usr/local/zeek/logs/current/loaded_scripts.log 
+zeek -NN | grep -i 'your_analyzer'
