@@ -103,6 +103,8 @@ In order to test your analyzer, after implementing the right features to detect 
    cd testing
    btest -U tests/standalone.spicy && btest -U tests/trace.zeek
    ```
+   It is interesting to execute `btest --help` and see parameters that can help you make troubleshooting, like verbose (-v) and diagnostic (-d).
+   
 4. Testing the analyzer:
    ```
    cd testing
