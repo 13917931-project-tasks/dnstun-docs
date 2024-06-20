@@ -125,4 +125,7 @@ Make sure you are using the [most recent version](https://docs.zeek.org/projects
 OBS:
 
 grep -r "modules_name" /usr/local/zeek/logs/current/loaded_scripts.log 
+
 zeek -NN | grep -i 'your_analyzer'
+
+Download the latest version of zeek, develop the custom analyzer in a docker container using the latest zeek image, then save the file of the analyzer in your local host and save it in a git repository. Whenever you make major changes in the analyzer, run a docker container with the folder containing the analyzer (insert example code) and update the baselines. After that, you should remove the analyzer and install it again.
