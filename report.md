@@ -52,8 +52,20 @@ In this sense, the informations related to tunnel establishement traffic can app
 
 There are 3 characteristics of DNS tunnel related packets that were used to promote its detection:
 
-1. The high [entropy](https://www.splunk.com/en_us/blog/security/random-words-on-entropy-and-dns.html) of the subdomains used to establish the tunnel. The Shannon Entropy formula can be used to calculate how random is a subdomain. 
+1. The high [entropy](https://www.splunk.com/en_us/blog/security/random-words-on-entropy-and-dns.html) of the subdomains used to establish the tunnel. The Shannon Entropy formula can be used to calculate how random is a subdomain.
+   1.1. The calculus involves promoting a negative sum of the frequency (quantity of occurrencies of the character divided by the size of the string) of each character multiplied by its log on the base of 2.
+2. The error flags bytes:
+   2.1. Normal DNS related traffic flags bytes are generally "01 00", which represents stand query packet, and "84 00" or "81 80", which represents a stand query response packet with no errors;
+   2.2. DNS tunnelling related packets have the flags bytes "9e 20", which represents, according to Wireshark, Unkown operation response, with no errors. However, it is possible that there is a misinterpretation made by Wireshark that makes it classify all packets as being responses.
+3. The size of the packets: In normal DNS traffic, packets generally have less than 300 bytes, but in DNS tunnelling, the packets generally have an anomalous size. Certainly, that are large DNS packets related to normal traffic, but combining an anomalous size with error flags bytes can be useful to promote thedetection of packets related to DNS tunnelling.
 
+In order to detected the DNsS tunneling related traffic, were created 2 frameworks: a script and a custom analyzer.
 
+## Custom script
 
+Knowing that the traffic related to the establishement of the tunnel is detected by Zeek as normal DNS traffic, the custom script was based on the event *dns_request*. One of the parameters of this function is the query related to the request. In this sense, this event was used to obtain the query and calculate its entropy, generating a log if the entropy calculated was equal or greater to 3.8.
+
+## Custom analyzer
+
+The custom analyzer that was developed to parse all traffic going **to** the UDP ports 53 and 5353. In this sense, it was set to identify the first 2 bytes as being the ID of the packet, the 2 sequent bytes as being the flags, and the sequent bytes where all parsed into a single unit parameter, called payload. 
 
