@@ -26,7 +26,7 @@ The second command promotes the establishement of a DNS tunnel server in *srv2*,
 2. -f to keep running in foreground;
 3. -P to define a password used for authentication.
 
-When establishing a DNS tunnel, it is necessary to define a network whose addresses will be used to create new interfaces in the server and in the clients hosts, and these interfaces will be used to promote the communication in the DNS tunnel. Another parameter that is applied is a domain, whose IP address is some that the attacker has access over.
+When establishing a DNS tunnel, it is necessary to define a network whose addresses will be used to create new interfaces in the server and in the clients hosts, and these interfaces will be used to promote the communication in the DNS tunnel. Another parameter that is applied is a domain, that is used by the client to establish the tunnel. 
 
 ### Connecting the client
 
@@ -36,5 +36,13 @@ iptables -I FORWARD -i s2+ -j ACCEPT
 mnsecx o1 iodine -f -P ChangeMe-123 10.0.0.2 iodine.hackinsdn.ufba.br
 ```
 
+The first 2 commands add a rule to the machine firewall allowing any traffic coming from interfaces starting with "s1" and "s2" to be forwarded, knowing that *s1 and *s2* are switches present in the Mininet-sec topology.
 
+In the third command, a DNS tunnel client is establised in the o1 host of Mininet-Sec topology. In this sense, it is used the IP of the server, that will used by the client establish the connection through DNS requests using the domain *iodine.hackinsdn.ufba.br* and the password defined for authentication. 
+
+In this case, the domain does not exist, however, it is possible to establish a tunnel because the server can recognize requests involving subdomains related to *iodine.hackinsdn.ufba.br* as being request to establish a tunnel. In this sense, in the command is defined that the client will send DNS requests to the IP 10.0.0.2 (which hosts the DNS tunnel server), using subdomains related to *iodine.hackinsdn.ufba.br*.
+
+## Communication in a DNS tunnel
+
+As previously discussed, the firt packets sent in a DNS tunnel are the ones sent by the client to establish the tunnel. They contain requests related to subdomain linked to the domain related to the server, and are sent to the IP related to the server. This traffic is recognized as being DNS normal traffic by Zeek, with a NULL type. However, the sequent packets are classified by Wireshark as being malformed or unknown, and are not detected by Zeek as being part of a DNS traffic.
 
