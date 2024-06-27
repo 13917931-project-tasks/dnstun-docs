@@ -44,5 +44,16 @@ In this case, the domain does not exist, however, it is possible to establish a 
 
 ## Communication in a DNS tunnel
 
-As previously discussed, the firt packets sent in a DNS tunnel are the ones sent by the client to establish the tunnel. They contain requests related to subdomain linked to the domain related to the server, and are sent to the IP related to the server. This traffic is recognized as being DNS normal traffic by Zeek, with a NULL type. However, the sequent packets are classified by Wireshark as being malformed or unknown, and are not detected by Zeek as being part of a DNS traffic.
+As previously discussed, the firt packets sent in a DNS tunnel are the ones sent by the client to establish the tunnel. They contain requests related to subdomain linked to the domain related to the server, and are sent to the IP related to the server. This traffic is recognized as being DNS normal traffic by Zeek, with a NULL type. However, the sequent packets are classified by Wireshark as being malformed or unknown, and are not detected by Zeek as being part of a DNS traffic. 
+
+In this sense, the informations related to tunnel establishement traffic can appear in DNS protocol related Zeek logs, bu the sequent traffic no. Consequently, it was necessary to create new frameworks to detected DNS tunnel related traffic.
+
+## Creating new frameworks in Zeek
+
+There are 3 characteristics of DNS tunnel related packets that were used to promote its detection:
+
+1. The high [entropy](https://www.splunk.com/en_us/blog/security/random-words-on-entropy-and-dns.html) of the subdomains used to establish the tunnel. The Shannon Entropy formula can be used to calculate how random is a subdomain. 
+
+
+
 
