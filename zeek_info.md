@@ -130,6 +130,8 @@ zeek -NN | grep -i 'your_analyzer'
 
 Download the latest version of zeek, develop the custom analyzer in a docker container using the latest zeek image, then save the folder of the analyzer in your local host and save it in a git repository. Whenever you make major changes in the analyzer, run a docker container with the folder containing the analyzer (insert example code) and update the baselines. After that, you should remove the analyzer and install it again.
 
+```
 docker pull zeek/zeek:latest
 docker run --rm -it zeek/zeek:latest bash
 docker run --rm -it /PathToCustomAnalyser:/CustomAnalyser zeek/zeek:latest bash
+```
