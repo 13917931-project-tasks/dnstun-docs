@@ -134,4 +134,5 @@ Download the latest version of zeek, develop the custom analyzer in a docker con
 docker pull zeek/zeek:latest
 docker run --rm -it zeek/zeek:latest bash
 docker run --rm -it /PathToCustomAnalyser:/CustomAnalyser zeek/zeek:latest bash
+apt-get update && apt-get install -y --no-install-recommends g++ cmake make libpcap-dev vim
 ```
