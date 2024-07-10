@@ -2,8 +2,15 @@
 
 ## Introduction
 
-- Zeek is a network tracking software, which can be used to obtain more information the traffic ongoing, through logs, and, thus, Zeek can be a helpful resource to analyze anomalies in traffic. In this sense, Zeek is powered by analyzers, which define protocols and network patterns to track, and by scripts, that basically tell Zeek what to do when facing a certain pattern of traffic. The scripts can define actions and functions that have to be executed when a certain event happens, for instance; 
-- A Zeek event is triggered when a certain pattern of traffic is detected. For example, whenever a message related to the DNS protocol is detected, this triggers the *dns_message* event. In this sense, Zeek events can be mentioned in scripts in order to promote the execution of certain actions and functions when a specific event is triggered;
+- Zeek is a traffic monitoring tool which generates logs about the network activities, and, thus, these informations can be used to detect anomalies in the traffic;
+- There is the possibility of promoting a custom analysis over the traffic, generating specific logs with information that interests the user.
+  
+### Zeek structure
+
+- Analyzers: Parse the incoming traffic, and divide the payload in units. Each unit have parameters, related to the processing of specific parts of the payload;
+- Events: Whenever Zeek ends the processing of a unit, an event is generated;
+- Scripts: One of the main functions of Zeek Scripts is to generate logs based on the events. In this sense, events can be used as functions in scripts, to define the execution of some commands in the context of the triggering of an event;
+- In this sense, the parameters defined in the analyzers can be used in the scripts, just like a parameter of a common function.
 
 ## Creating a new script in Zeek
 
