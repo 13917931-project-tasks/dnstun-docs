@@ -187,24 +187,25 @@ event dns_request(c: connection, msg: dns_msg, query: string, qtype: count, qcla
 	local bigram:string;
 	local result=0.0;
 
+
+	
+			
 	if (entropy_result >= 3.88){
 		for (i in query){
-			if ((counter1)%2==0 && counter1<|query|-1)
+			if (counter1<|query|-1)
 					{
 					bigram=query[counter1]+query[counter1+1];
 					#print bigram;
 					result=probabilities(bigram);
-					if (result > -1){
 					probability = probability+result;
 					}
-					}
 					counter1+=1;
-				}
-		if (probability <= 600){
+			}
+		if (probability <= 1500) {
 		Log::write(DNSTunnelEstablishment::LOG, [$ctime=current_time(), $uid=c$dns$uid, $id=c$dns$id, $query=query, $entropy=entropy_result, $probability=probability]);	
 		#Log::write(DNSTunnelEstablishment::LOG, [$ctime=current_time(), $uid=c$dns$uid, $id=c$dns$id, $query=query, $probability=probability]);
-		}
 			}
+		}
 			
 		total_entropy += probability;
 		total_queries += 1;
