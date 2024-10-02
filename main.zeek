@@ -1,3 +1,5 @@
+#script used to calculate the entropies of the queries and obtain its bi-grams
+#in order to verify if the query in randomly generated
 
 module DNSTunnelEstablishment;
 
